@@ -17,9 +17,8 @@ with psycopg2.connect(**conn_params) as conn:
             for row in reader:
                 cur.execute("INSERT INTO customers (customer_id, company_name, contact_name)"
                             "VALUES (%s, %s, %s)", tuple(row))
-
+        # получаем результат для проверки
         cur.execute("SELECT * FROM customers")
-
         rows = cur.fetchall()
         for row in rows:
             print(row)
@@ -35,7 +34,6 @@ with psycopg2.connect(**conn_params) as conn:
                             "VALUES (%s, %s, %s, %s, %s, %s)", tuple(row))
 
         cur.execute("SELECT * FROM employees")
-
         rows = cur.fetchall()
         for row in rows:
             print(row)
@@ -51,7 +49,6 @@ with psycopg2.connect(**conn_params) as conn:
                             "VALUES (%s, %s, %s, %s, %s)", tuple(row))
 
         cur.execute("SELECT * FROM orders")
-
         row = cur.fetchall()
         for row in rows:
             print(row)
