@@ -49,7 +49,7 @@ with psycopg2.connect(**conn_params) as conn:
                             "VALUES (%s, %s, %s, %s, %s)", tuple(row))
 
         cur.execute("SELECT * FROM orders")
-        row = cur.fetchall()
+        rows = cur.fetchall()
         for row in rows:
             print(row)
 conn.close()
